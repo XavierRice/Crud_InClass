@@ -11,7 +11,7 @@ function App() {
   return (
     <>
       <h1>XXX</h1>
-      <h3>TEST</h3>
+      <h3>TEST of Secret:{secret}</h3>
     </>
   )
 }
