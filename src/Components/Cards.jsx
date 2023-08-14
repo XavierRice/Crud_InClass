@@ -1,7 +1,13 @@
 import DetailsCard from "./DetailsCard.jsx";
 
 
-const Cards = ({product, allShows, setAllShows}) => {
+const Cards = ({ product, allShows, setAllShows }) => {
+
+    const [toggleEdit, setToggleEdit] = useState(false)
+
+    const [formObj, setFormObj] = useState({ title: "", country: "", dateAdded: "", releaseYear: null, rating: "", duration: "", listedIn: "", description: "" })
+
+
 
     function handleDelete(showToDelete) {
 
@@ -17,11 +23,15 @@ const Cards = ({product, allShows, setAllShows}) => {
         fetch(`http://localhost:5001/api/shows/${showToDelete.id}`, { method: "DELETE" })
             .then(r => r.json())
             .then(console.log)
-    
+
     }
 
     function handleEdit() {
 
+
+
+
+
     }
 
 
@@ -30,16 +40,29 @@ const Cards = ({product, allShows, setAllShows}) => {
 
 
 
-    return (
+    return !toggleEdit ? (
 
         <div key={product.id}>
             <h4>{product.title}</h4>
             <button onClick={(se) => handleDelete(product)}>X</button>
-            <button onClick={(se) => handleEdit(product)}>⭐️</button>
+            <button onClick={(se) => setToggleEdit(!toggleEdit)} >{toggleEdit? "close":"Edit⚡️"}</button>
             <DetailsCard product={product} />
-        </div>
+        </div>)
+    
+    :
+    
+    (<form className="edit-form">
+            <label>
+                <input
+                type="text"
+                onChange={(se)=>se.target.value}
+                />
+            <button onClick={(se) => handleEdit(product)}>⭐️</button>
+                <button onClick={(se) => setToggleEdit(!toggleEdit)} >close edit</button>
+            </label>
+        </form>)
 
-    )
+
 
 }
 
