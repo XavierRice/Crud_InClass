@@ -14,11 +14,35 @@ const ShowsList = () => {
             .catch(err => console.log(err))
     }, [])
 
-    
+    function handleDelete(showToDelete){
 
-    const showsToRender = allShows.sort().map((eachShow) =>
+     console.log("be gone", showToDelete.id)
+     
+     const filteredResults = allShows.filter((eachShow) => {
+        if(eachShow.id !== showToDelete.id){
+            return true
+        }});
+
+        setAllShows([...filteredResults])
+
+
+    fetch(`http://localhost:5001/api/shows/${showToDelete.id}`, { method: "DELETE"})
+    .then(r => r.json())
+    .then(console.log)
+
+    }
+
+    function handleEdit(){
+
+    }
+
+
+
+    const showsToRender = allShows.map((eachShow) =>
         <div key={eachShow.id}>
             <h4>{eachShow.title}</h4>
+            <button onClick={(se)=>handleDelete(eachShow)}>X</button>
+            <button onClick={(se) => handleEdit(eachShow)}>⭐️</button>
             <DetailsCard product={eachShow}/>
         </div>
 

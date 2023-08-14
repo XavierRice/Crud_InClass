@@ -3,7 +3,7 @@ import { useState } from "react";
 
 const ShowsNewForm = () => {
 
-  const [form, setForm] = useState({})
+  
   const [title, setTitle] = useState("")
   const [country, setCountry] = useState("")
   const [release, setRelease] = useState(1900)
@@ -35,14 +35,20 @@ const ShowsNewForm = () => {
     //POST : (C)RUD :: Create
     
     const options = {
-      Method: "POST", 
-      Body: JSON.stringify(newShowObj),
-      Headers: {
+      method: "POST", 
+      body: JSON.stringify(newShowObj),
+      headers: {
         Accept: "application.json",
         'Content-Type': 'application/json'
-      },
+      }
     }
 
+    // const configObj = { 
+
+    //     method: "POST",
+    //     headers: { 'Content-Type': 'application/json'},
+    //     body: JSON.stringify(newShowObj),
+    // }
 
     fetch("http://localhost:5001/api/shows", options)
     .then(r => r.json())
