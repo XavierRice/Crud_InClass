@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import DetailsCard from "./DetailsCard";
 import "./ShowsList.css"
-
+import Cards from "./Cards.jsx";
 
 const ShowsList = () => {
 
@@ -14,24 +14,24 @@ const ShowsList = () => {
             .catch(err => console.log(err))
     }, [])
 
-    function handleDelete(showToDelete) {
+    // function handleDelete(showToDelete) {
 
-        console.log("be gone", showToDelete.id)
+    //     console.log("be gone", showToDelete.id)
 
-        const filteredResults = allShows.filter((eachShow) => {
-            if (eachShow.id !== showToDelete.id) {
-                return true
-            }
-        });
+    //     const filteredResults = allShows.filter((eachShow) => {
+    //         if (eachShow.id !== showToDelete.id) {
+    //             return true
+    //         }
+    //     });
 
-        setAllShows([...filteredResults])
+    //     setAllShows([...filteredResults])
 
 
-        fetch(`http://localhost:5001/api/shows/${showToDelete.id}`, { method: "DELETE" })
-            .then(r => r.json())
-            .then(console.log)
+    //     fetch(`http://localhost:5001/api/shows/${showToDelete.id}`, { method: "DELETE" })
+    //         .then(r => r.json())
+    //         .then(console.log)
 
-    }
+    // }
 
     function handleEdit() {
 
@@ -42,7 +42,7 @@ const ShowsList = () => {
     const showsToRender = allShows.map((eachShow) =>
 
 
-        <Cards product={eachShow}/>
+        <Cards product={eachShow} allShows={allShows} setAllShows={setAllShows}/>
 
     )
 
@@ -51,7 +51,7 @@ const ShowsList = () => {
         <div key={show.id} className="show-cards-styles" >
             <h4>{show.title}</h4>
             <h5>{show.dateAdded}</h5>
-            <DetailsCard product={show} />
+            <DetailsCard product={show}  />
         </div>
     )
 

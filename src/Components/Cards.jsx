@@ -1,7 +1,34 @@
 import DetailsCard from "./DetailsCard.jsx";
 
 
-const Cards = () => {
+const Cards = ({product, allShows, setAllShows}) => {
+
+    function handleDelete(showToDelete) {
+
+        console.log("be gone", showToDelete.id)
+
+        const filteredResults = allShows.filter((eachShow) => {
+            if (eachShow.id !== showToDelete.id) {
+                return true
+            }
+        })
+        setAllShows([...filteredResults])
+
+        fetch(`http://localhost:5001/api/shows/${showToDelete.id}`, { method: "DELETE" })
+            .then(r => r.json())
+            .then(console.log)
+    
+    }
+
+    function handleEdit() {
+
+    }
+
+
+
+
+
+
 
     return (
 
