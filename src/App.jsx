@@ -1,8 +1,15 @@
 import { useState } from 'react'
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'
 const secret = import.meta.env.VITE_10_VAR
-
 import './App.css'
+
+
+//COMPONENTS//
+import NavBar from './Components/NavBar.jsx'
+import ShowsList from './Components/ShowsList.jsx'
+import MoviesList from './Components/MoviesList.jsx'
+import NewProduct from './Components/NewProduct'
+import Crud from './Components/CRUD'
 
 function App() {
 
@@ -10,8 +17,25 @@ function App() {
 
   return (
     <>
+      <header>
+        <h1>CRUD LAB</h1>
+      </header>
+      <Routes>
+
+         <Route path='/' element={<h1>Home</h1>}/>Home
+         <Route path='/shows' element={<ShowsList/>}/>Shows
+         <Route path='/shows/new' element={<NewProduct/>}/>New
+         <Route path='/movies' element={<MoviesList/>}/>movies
+      </Routes>
+
+
       <h1>XXX</h1>
       <h3>TEST of Secret: {secret}</h3>
+
+
+      <footer>
+        X-MAN ™
+      </footer>
     </>
   )
 }
@@ -19,6 +43,30 @@ function App() {
 export default App
 
 /*   
+ Movies: /api/movies
+
+ CRUD for Movies :  Action         REQUEST    ROUTE  (FRONTEND)
+
+                    Create          POST      movies/new
+                    Read            GET       movies/{index} or 
+                    Update
+                    Destroy
+
+
+CRUD for Shows :    Action         REQUEST    ROUTE (FRONTEND)
+
+                    Create          POST      shows/new
+                    Read            GET       shows/(index)  or /shows/:id
+                    Update
+                    Destroy
+
+
+"http://localhost:5001/api/"
+
+
+
+
+
   Movies: /api/movies
  {
     "id": "YqYJsEh",
