@@ -1,5 +1,6 @@
+import { useState } from "react";
 import DetailsCard from "./DetailsCard.jsx";
-
+import "./ShowsList.css"
 
 const Cards = ({ product, allShows, setAllShows }) => {
 
@@ -7,7 +8,7 @@ const Cards = ({ product, allShows, setAllShows }) => {
 
     const [formObj, setFormObj] = useState({ title: "", country: "", dateAdded: "", releaseYear: null, rating: "", duration: "", listedIn: "", description: "" })
 
-
+    
 
     function handleDelete(showToDelete) {
 
@@ -30,37 +31,41 @@ const Cards = ({ product, allShows, setAllShows }) => {
 
 
 
-
-
     }
 
 
-
-
-
-
-
-    return !toggleEdit ? (
-
+    return toggleEdit ? (
         <div key={product.id}>
             <h4>{product.title}</h4>
+            <form className="edit-form">
+                <label htmlFor="entry1">
+                    <input
+                        type="text"
+                        onChange={(se) => se.target.value}
+                        id="key"
+                    />
+                    <input
+                        type="text"
+                        onChange={(se) => se.target.value}
+                        id="value"
+                    />  
+                    <button onClick={(se) => handleEdit(product)}>⭐️</button>
+                    <button onClick={(se) => setToggleEdit(!toggleEdit)} >close edit</button>
+                </label>
+            </form>
+        </div>
+
+    ) : (
+
+        <div key={product.id} className="show-card-styles">
+            <h4>{product.title}</h4>
             <button onClick={(se) => handleDelete(product)}>X</button>
-            <button onClick={(se) => setToggleEdit(!toggleEdit)} >{toggleEdit? "close":"Edit⚡️"}</button>
+            <button onClick={(se) => setToggleEdit(!toggleEdit)} >{toggleEdit ? "close" : "Edit⚡️"}</button>
             <DetailsCard product={product} />
-        </div>)
-    
-    :
-    
-    (<form className="edit-form">
-            <label>
-                <input
-                type="text"
-                onChange={(se)=>se.target.value}
-                />
-            <button onClick={(se) => handleEdit(product)}>⭐️</button>
-                <button onClick={(se) => setToggleEdit(!toggleEdit)} >close edit</button>
-            </label>
-        </form>)
+        </div>
+
+    )
+
 
 
 
