@@ -13,6 +13,7 @@ return(
         <p>{product.description}</p>
         <h5>{product.listedIn}</h5>
         <h5>{product.dateAdded}</h5>
+        <h5>{product.duration}</h5>
        </div>
        )}
         <h5>{product.rating}</h5> 

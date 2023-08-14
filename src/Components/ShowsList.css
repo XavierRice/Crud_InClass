@@ -1,0 +1,18 @@
+.shows-list-styles{
+    background-color: darkgray;
+   
+
+}
+
+.display-show-cards {
+
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+
+}
+
+.show-cards-styles{
+    border: 30px solid gold;
+    margin: 10px;
+    border-radius: 10%;
+}

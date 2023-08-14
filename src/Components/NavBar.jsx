@@ -3,19 +3,22 @@ import {Link} from "react-router-dom"
 const NavBar = () => {
 
  return (
-       <div>
+       <div className="nav-bar-styles">
         <Link to={'/'}>
-           <h3>Home</h3> 
+           <h3>Home🏚️</h3> 
         </Link>
         {" "}
         <Link to={'/shows'}>
-           <h3>All Shows</h3>
+           <h3>All Shows 📺</h3>
         </Link>
         {" "}
         <Link to={'/movies'}>
-           <h3>All Movies</h3>  
+           <h3>All Movies 📼</h3>  
         </Link>
-
+        {" "}
+         <Link to={'/shows/new'}>
+            <h3>Add new Shows 📝</h3>
+         </Link>
        </div>
  )
 

@@ -8,7 +8,7 @@ import './App.css'
 import NavBar from './Components/NavBar.jsx'
 import ShowsList from './Components/ShowsList.jsx'
 import MoviesList from './Components/MoviesList.jsx'
-import NewProduct from './Components/NewProduct'
+import ShowsNewForm from './Components/ShowsNewForm'
 import Crud from './Components/CRUD'
 
 function App() {
@@ -19,13 +19,13 @@ function App() {
     <>
       <header>
         <h1>CRUD LAB</h1>
+        <NavBar />
       </header>
       <Routes>
-
-         <Route path='/' element={<h1>Home</h1>}/>Home
-         <Route path='/shows' element={<ShowsList/>}/>Shows
-         <Route path='/shows/new' element={<NewProduct/>}/>New
-         <Route path='/movies' element={<MoviesList/>}/>movies
+        <Route path='/' element={<h1>Home</h1>} />
+        <Route path='/shows' element={<ShowsList />} />
+        <Route path='/shows/new' element={<ShowsNewForm/>} />
+        <Route path='/movies' element={<MoviesList />} />
       </Routes>
 
 

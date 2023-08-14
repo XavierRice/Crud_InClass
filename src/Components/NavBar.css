@@ -1,0 +1,6 @@
+.nav-bar-styles{
+    background-color: rgb(189, 169, 207);
+    display: flex;
+    flex-wrap: wrap;
+    text-align: center;
+}
